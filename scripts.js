@@ -5,7 +5,8 @@ const newsContainer = document.getElementById('news-container');
 function loadCryptoChart() {
     chartContainer.innerHTML = ''; // Clear existing content
     new TradingView.widget({
-        "autosize": true,
+        "width": "100%",
+        "height": 600,
         "symbol": "BINANCE:BTCUSDT",
         "interval": "D",
         "timezone": "Etc/UTC",
@@ -20,7 +21,8 @@ function loadCryptoChart() {
 function loadStockChart() {
     chartContainer.innerHTML = ''; // Clear existing content
     new TradingView.widget({
-        "autosize": true,
+        "width": "100%",
+        "height": 600,
         "symbol": "NASDAQ:AAPL",
         "interval": "D",
         "timezone": "Etc/UTC",
@@ -42,7 +44,7 @@ function loadNews() {
                 newsItem.className = 'news-item';
                 newsItem.innerHTML = `
                     <h3><a href="${article.url}" target="_blank">${article.title}</a></h3>
-                    <p>${article.description}</p>
+                    <p>${article.description || 'No description available.'}</p>
                 `;
                 newsContainer.appendChild(newsItem);
             });
