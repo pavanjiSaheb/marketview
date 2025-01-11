@@ -6,35 +6,95 @@
   <title>Market View</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="https://s3.tradingview.com/tv.js"></script>
 </head>
 <body>
   <div class="container">
     <header>
       <h1>Market View</h1>
       <nav>
-        <a href="#">Home</a>
-        <a href="#">Charts</a>
-        <a href="#">News</a>
-        <a href="#">About</a>
+        <a href="#" class="active" id="cryptoTab">Crypto</a>
+        <a href="#" id="stocksTab">Stocks</a>
       </nav>
     </header>
-    <div class="main-content">
-      <div class="section dashboard">
-        <h2>Dashboard</h2>
-        <p>Track real-time stock and crypto data from Binance, TradingView, and more.</p>
-      </div>
-      <div class="section charts">
-        <h2>Charts</h2>
-        <p>View detailed stock and cryptocurrency charts.</p>
-      </div>
-      <div class="section news">
-        <h2>Market News</h2>
-        <p>Stay updated with the latest market news and trends.</p>
+    
+    <div id="chartSection" class="chart-section">
+      <!-- TradingView Widget will load here -->
+    </div>
+    
+    <div class="news-section">
+      <h2>Latest Market News</h2>
+      <div class="news-container">
+        <!-- News articles will appear here (could use an API like NewsAPI for real-time news) -->
+        <div class="news-item">Bitcoin hits $50K - What's next?</div>
+        <div class="news-item">Stock market sees major gains - Dow up 500 points</div>
+        <div class="news-item">Ethereum upgrade coming soon - Expect big changes!</div>
       </div>
     </div>
-    <footer>
-      <p>&copy; 2025 Market View. All Rights Reserved.</p>
-    </footer>
   </div>
+
+  <footer>
+    <p>&copy; 2025 Market View. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Initialize TradingView widget
+    const cryptoWidget = new TradingView.widget({
+      container_id: "chartSection",
+      width: "100%",
+      height: "600px",
+      symbol: "BINANCE:BTCUSDT",
+      interval: "60",
+      timezone: "Etc/UTC",
+      theme: "dark",
+      style: "1",
+      locale: "en",
+      toolbar_bg: "#f1f3f6",
+      allow_symbol_change: true,
+      hideideas: true,
+      details: true,
+      hotlist: true,
+      news: ["headlines"],
+      enabled_features: ["study_templates", "show_interval_dialog_on_load"],
+      disabled_features: ["header_widget", "header_compare", "header_fullscreen_button"]
+    });
+
+    const stockWidget = new TradingView.widget({
+      container_id: "chartSection",
+      width: "100%",
+      height: "600px",
+      symbol: "NASDAQ:AAPL",
+      interval: "60",
+      timezone: "Etc/UTC",
+      theme: "dark",
+      style: "1",
+      locale: "en",
+      toolbar_bg: "#f1f3f6",
+      allow_symbol_change: true,
+      hideideas: true,
+      details: true,
+      hotlist: true,
+      news: ["headlines"],
+      enabled_features: ["study_templates", "show_interval_dialog_on_load"],
+      disabled_features: ["header_widget", "header_compare", "header_fullscreen_button"]
+    });
+
+    // Tab Switching Functionality
+    document.getElementById('cryptoTab').addEventListener('click', function() {
+      cryptoWidget.onChartReady(() => {
+        cryptoWidget.chart().setSymbol('BINANCE:BTCUSDT');
+      });
+      document.getElementById('cryptoTab').classList.add('active');
+      document.getElementById('stocksTab').classList.remove('active');
+    });
+
+    document.getElementById('stocksTab').addEventListener('click', function() {
+      stockWidget.onChartReady(() => {
+        stockWidget.chart().setSymbol('NASDAQ:AAPL');
+      });
+      document.getElementById('stocksTab').classList.add('active');
+      document.getElementById('cryptoTab').classList.remove('active');
+    });
+  </script>
 </body>
 </html>
