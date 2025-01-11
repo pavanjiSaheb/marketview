@@ -1,3 +1,4 @@
+Pavan, [11-01-2025 12:17]
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,29 +19,33 @@
         <nav class="nav">
             <a href="#" id="cryptoTab" class="active">Crypto</a>
             <a href="#" id="stocksTab">Stocks</a>
-            <a href="#">News</a>
+            <a href="#" id="newsTab">News</a>
             <a href="#">Login</a>
         </nav>
     </header>
 
-    <!-- Charts Section -->
-    <section id="chartsSection">
-        <div class="tabs">
-            <button id="cryptoTabButton" class="tab-btn active">Crypto</button>
-            <button id="stocksTabButton" class="tab-btn">Stocks</button>
-        </div>
-        <div id="chart" class="chart-container"></div>
-    </section>
+    <!-- Main Content Section -->
+    <main>
+        <!-- Charts Section -->
+        <section id="chartsSection">
+            <div class="tabs">
+                <button id="cryptoTabButton" class="tab-btn active">Crypto</button>
+                <button id="stocksTabButton" class="tab-btn">Stocks</button>
+            </div>
+            <div id="chart" class="chart-container"></div>
+        </section>
 
-    <!-- News Section -->
-    <section id="newsSection">
-        <div class="news-container">
-            <h2>Latest News</h2>
-            <div class="news-item">Bitcoin hits $60k: Global adoption increases</div>
-            <div class="news-item">Ethereum's new upgrade promises faster transactions</div>
-            <div class="news-item">Global stock markets face turbulent days ahead</div>
-        </div>
-    </section>
+        <!-- News Section -->
+        <section id="newsSection" class="hidden">
+            <div class="news-container">
+                <h2>Latest News</h2>
+                <div class="news-item">Bitcoin hits $60k: Global adoption increases</div>
+                <div class="news-item">Ethereum's new upgrade promises faster transactions</div>
+                <div class="news-item">Global stock markets face turbulent days ahead</div>
+                <div class="news-item">Tesla stock soars as production ramps up</div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer Section -->
     <footer>
@@ -79,22 +84,52 @@
             news: ["headlines"]
         });
 
-        // Switch between Crypto and Stocks charts
-        document.getElementById('cryptoTabButton').addEventListener('click', () => {
+        // Tab functionality to switch between Crypto, Stocks, and News
+        const cryptoTab = document.getElementById('cryptoTab');
+        const stocksTab = document.getElementById('stocksTab');
+        const newsTab = document.getElementById('newsTab');
+        const newsSection = document.getElementById('newsSection');
+        const chartsSection = document.getElementById('chartsSection');
+
+        const showCryptoChart = () => {
             cryptoChart.onChartReady(() => {
                 cryptoChart.chart().setSymbol('BINANCE:BTCUSDT');
             });
-            document.getElementById('cryptoTabButton').classList.add('active');
-            document.getElementById('stocksTabButton').classList.remove('active');
-        });
+            chartsSection.classList.remove('hidden');
+            newsSection.classList.add('hidden');
+            cryptoTab.classList.add('active');
+            stocksTab.classList.remove('active');
+            newsTab.classList.remove('active');
+        };
 
-        document.getElementById('stocksTabButton').addEventListener('click', () => {
+        const showStocksChart = () => {
             stockChart.onChartReady(() => {
                 stockChart.chart().setSymbol('NASDAQ:AAPL');
-            });
-            document.getElementById('stocksTabButton').classList.add('active');
-            document.getElementById('cryptoTabButton').classList.remove('active');
-        });
+
+Pavan, [11-01-2025 12:17]
+});
+            chartsSection.classList.remove('hidden');
+            newsSection.classList.add('hidden');
+            stocksTab.classList.add('active');
+            cryptoTab.classList.remove('active');
+            newsTab.classList.remove('active');
+        };
+
+        const showNewsSection = () => {
+            chartsSection.classList.add('hidden');
+            newsSection.classList.remove('hidden');
+            newsTab.classList.add('active');
+            cryptoTab.classList.remove('active');
+            stocksTab.classList.remove('active');
+        };
+
+        // Add event listeners
+        cryptoTab.addEventListener('click', showCryptoChart);
+        stocksTab.addEventListener('click', showStocksChart);
+        newsTab.addEventListener('click', showNewsSection);
+
+        // Default view is Crypto Chart
+        showCryptoChart();
     </script>
 </body>
 </html>
