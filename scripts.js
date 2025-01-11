@@ -1,104 +1,67 @@
-/* Global styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+// Your News API Key
+const newsAPIKey = '85a51b6372cc4ec2adf8fa91af687657';
+const newsContainer = document.getElementById('news');
+
+// Load the TradingView chart for crypto by default
+function loadCryptoChart() {
+  new TradingView.widget({
+    "autosize": true,
+    "symbol": "BINANCE:BTCUSDT",
+    "interval": "60",
+    "container_id": "chart-container",
+    "datafeed": new TradingView.Datafeeds.UDFCompatibleDatafeed("https://demo_feed.tradingview.com"),
+    "library_path": "charting_library/",
+    "locale": "en",
+    "theme": "dark",
+    "timezone": "Etc/UTC",
+    "studies_overrides": {},
+  });
 }
 
-body {
-    display: flex;
-    height: 100vh;
-    background-color: #111;
-    color: #fff;
+// Fetch latest news from NewsAPI
+function loadNews() {
+  fetch(https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${newsAPIKey})
+    .then(response => response.json())
+    .then(data => {
+      const articles = data.articles;
+      newsContainer.innerHTML = '';
+      articles.forEach(article => {
+        const newsItem = document.createElement('div');
+        newsItem.classList.add('news-item');
+        newsItem.innerHTML = 
+          <h3><a href="${article.url}" target="_blank">${article.title}</a></h3>
+          <p>${article.description}</p>
+        ;
+        newsContainer.appendChild(newsItem);
+      });
+    })
+    .catch(error => console.error('Error fetching news:', error));
 }
 
-/* Sidebar */
-.sidebar {
-    width: 250px;
-    background-color: #1c1f26;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-}
+// Tab functionality
+const cryptoTab = document.getElementById('crypto-tab');
+const stocksTab = document.getElementById('stocks-tab');
+const newsTab = document.getElementById('news-tab');
+const chartContainer = document.getElementById('chart-container');
+const newsContainerDiv = document.getElementById('news-container');
 
-.sidebar .logo h1 {
-    color: #f9b236;
-    font-size: 32px;
-    font-weight: 700;
-}
+cryptoTab.addEventListener('click', () => {
+  chartContainer.style.display = 'block';
+  newsContainerDiv.style.display = 'none';
+  loadCryptoChart();
+});
 
-.sidebar nav ul {
-    list-style: none;
-    padding: 0;
-}
+stocksTab.addEventListener('click', () => {
+  chartContainer.style.display = 'block';
+  newsContainerDiv.style.display = 'none';
+  loadStockChart(); // You can customize this to load different stock charts
+});
 
-.sidebar nav ul li {
-    margin-bottom: 20px;
-}
+newsTab.addEventListener('click', () => {
+  chartContainer.style.display = 'none';
+  newsContainerDiv.style.display = 'block';
+  loadNews();
+});
 
-.sidebar nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 20px;
-    display: block;
-    padding: 10px;
-    background-color: #2f353b;
-    border-radius: 8px;
-    transition: background 0.3s;
-}
-
-.sidebar nav ul li a:hover {
-    background-color: #f9b236;
-}
-
-/* Main Content */
-.main-content {
-    flex-grow: 1;
-    padding: 20px;
-}
-
-.tab-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.charts-container {
-    width: 100%;
-    max-width: 1200px;
-    height: 800px;
-}
-
-.chart {
-    width: 100%;
-    height: 100%;
-    background-color: #333;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.news-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 1200px;
-    margin-top: 20px;
-}
-
-.news-item {
-    background-color: #222;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    font-size: 20px;
-}
-
-footer {
-    background-color: #1c1f26;
-    color: white;
-    padding: 10px;
-    text-align: center;
-}
+// Load the crypto chart by default
+loadCryptoChart();
