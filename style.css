@@ -1,67 +1,87 @@
-const newsAPIKey = '85a51b6372cc4ec2adf8fa91af687657';  // Replace with your actual News API key
-const newsContainer = document.getElementById('news-container');
-const chartContainer = document.getElementById('chart-container');
-
-// Function to load TradingView chart for Crypto
-function loadCryptoChart() {
-    chartContainer.innerHTML = '';  // Clear existing content
-    new TradingView.widget({
-        "autosize": true,
-        "symbol": "BINANCE:BTCUSDT",
-        "interval": "60",
-        "container_id": "chart-container",
-        "datafeed": new TradingView.Datafeeds.UDFCompatibleDatafeed("https://demo_feed.tradingview.com"),
-        "library_path": "https://unpkg.com/@tradingview/charting-library@latest",
-        "locale": "en",
-        "theme": "dark",
-        "timezone": "Etc/UTC",
-        "studies_overrides": {},
-        "toolbar_bg": "#333",
-        "hide_side_toolbar": false,
-        "allow_symbol_change": true,
-    });
+body {
+    background-color: #121212;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
 }
 
-// Function to load TradingView chart for Stocks
-function loadStockChart() {
-    chartContainer.innerHTML = '';  // Clear existing content
-    new TradingView.widget({
-        "autosize": true,
-        "symbol": "NASDAQ:GOOGL",
-        "interval": "60",
-        "container_id": "chart-container",
-        "datafeed": new TradingView.Datafeeds.UDFCompatibleDatafeed("https://demo_feed.tradingview.com"),
-        "library_path": "https://unpkg.com/@tradingview/charting-library@latest",
-        "locale": "en",
-        "theme": "dark",
-        "timezone": "Etc/UTC",
-        "studies_overrides": {},
-        "toolbar_bg": "#333",
-        "hide_side_toolbar": false,
-        "allow_symbol_change": true,
-    });
+header {
+    background: linear-gradient(90deg, #1E3C72, #2A5298);
+    padding: 20px;
+    text-align: center;
 }
 
-// Function to load latest news
-function loadNews() {
-    fetch(`https://newsapi.org/v2/top-headlines?category=business&apiKey=${newsAPIKey}`)
-        .then(response => response.json())
-        .then(data => {
-            const articles = data.articles;
-            newsContainer.innerHTML = '';  // Clear existing news
-            articles.forEach(article => {
-                const newsItem = document.createElement('div');
-                newsItem.classList.add('news-item');
-                newsItem.innerHTML = `
-                    <h3><a href="${article.url}" target="_blank">${article.title}</a></h3>
-                    <p>${article.description}</p>
-                    <img src="${article.urlToImage}" alt="${article.title}" style="width: 100%; height: auto; border-radius: 5px;">
-                `;
-                newsContainer.appendChild(newsItem);
-            });
-        })
-        .catch(error => console.error('Error fetching news:', error));
+header h1 {
+    font-size: 2.5rem;
+    margin: 0;
 }
 
-// Initial load (Crypto chart by default)
-loadCryptoChart();
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    background: #333;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    background: #5c85f7;
+}
+
+#content {
+    padding: 20px;
+    text-align: center;
+}
+
+#chart-container {
+    margin: 20px auto;
+    width: 90%;
+    height: 500px;
+}
+
+#news-container {
+    margin-top: 30px;
+}
+
+.news-item {
+    background: #333;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.news-item:hover {
+    background: #444;
+}
+
+.news-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.news-item p {
+    font-size: 1rem;
+}
+
+footer {
+    background: #222;
+    padding: 10px 0;
+    text-align: center;
+    color: #aaa;
+    font-size: 0.9rem;
+}
