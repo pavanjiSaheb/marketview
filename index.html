@@ -1,89 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MarketView - Crypto & Stock Charts</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://s3.tradingview.com/tv.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MarketView - Crypto & Stock Charts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://s3.tradingview.com/tv.js"></script>
 </head>
 <body>
-  <header>
-    <div class="header-content">
-      <h1>MarketView</h1>
-      <nav>
-        <a href="#cryptoTab" class="active" id="cryptoTabLink">Crypto</a>
-        <a href="#stocksTab" id="stocksTabLink">Stocks</a>
-        <a href="#newsTab">News</a>
-        <a href="#loginTab">Login</a>
-      </nav>
-    </div>
-  </header>
-  
-  <section id="chartsSection">
-    <div id="chartSection" class="chart-container"></div>
-  </section>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <h1>MarketView</h1>
+        </div>
+        <nav class="nav">
+            <a href="#" id="cryptoTab" class="active">Crypto</a>
+            <a href="#" id="stocksTab">Stocks</a>
+            <a href="#">News</a>
+            <a href="#">Login</a>
+        </nav>
+    </header>
 
-  <section id="newsSection">
-    <h2>Latest Market News</h2>
-    <div class="news-item">Bitcoin breaks $60K - Market surges</div>
-    <div class="news-item">Ethereum sees major upgrade - ETH 2.0 live</div>
-    <div class="news-item">Global stock markets hit all-time highs</div>
-  </section>
+    <!-- Charts Section -->
+    <section id="chartsSection">
+        <div class="tabs">
+            <button id="cryptoTabButton" class="tab-btn active">Crypto</button>
+            <button id="stocksTabButton" class="tab-btn">Stocks</button>
+        </div>
+        <div id="chart" class="chart-container"></div>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 MarketView. All Rights Reserved.</p>
-  </footer>
+    <!-- News Section -->
+    <section id="newsSection">
+        <div class="news-container">
+            <h2>Latest News</h2>
+            <div class="news-item">Bitcoin hits $60k: Global adoption increases</div>
+            <div class="news-item">Ethereum's new upgrade promises faster transactions</div>
+            <div class="news-item">Global stock markets face turbulent days ahead</div>
+        </div>
+    </section>
 
-  <script>
-    // Initialize TradingView widget for Crypto and Stocks
-    const cryptoWidget = new TradingView.widget({
-      container_id: "chartSection",
-      width: "100%",
-      height: "600px",
-      symbol: "BINANCE:BTCUSDT",
-      interval: "60",
-      timezone: "Etc/UTC",
-      theme: "dark",
-      locale: "en",
-      toolbar_bg: "#1c1f26",
-      details: true,
-      hotlist: true,
-      news: ["headlines"],
-    });
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 MarketView. All Rights Reserved.</p>
+    </footer>
 
-    const stockWidget = new TradingView.widget({
-      container_id: "chartSection",
-      width: "100%",
-      height: "600px",
-      symbol: "NASDAQ:AAPL",
-      interval: "60",
-      timezone: "Etc/UTC",
-      theme: "dark",
-      locale: "en",
-      toolbar_bg: "#1c1f26",
-      details: true,
-      hotlist: true,
-      news: ["headlines"],
-    });
+    <!-- Script to Handle Chart Switching -->
+    <script>
+        const cryptoChart = new TradingView.widget({
+            container_id: "chart",
+            width: "100%",
+            height: "600px",
+            symbol: "BINANCE:BTCUSDT",
+            interval: "1D",
+            timezone: "Etc/UTC",
+            theme: "dark",
+            locale: "en",
+            toolbar_bg: "#1c1f26",
+            details: true,
+            hotlist: true,
+            news: ["headlines"]
+        });
 
-    // Tab Switching Functionality for Crypto and Stocks
-    document.getElementById('cryptoTabLink').addEventListener('click', () => {
-      cryptoWidget.onChartReady(() => {
-        cryptoWidget.chart().setSymbol('BINANCE:BTCUSDT');
-      });
-      document.getElementById('cryptoTabLink').classList.add('active');
-      document.getElementById('stocksTabLink').classList.remove('active');
-    });
+        const stockChart = new TradingView.widget({
+            container_id: "chart",
+            width: "100%",
+            height: "600px",
+            symbol: "NASDAQ:AAPL",
+            interval: "1D",
+            timezone: "Etc/UTC",
+            theme: "dark",
+            locale: "en",
+            toolbar_bg: "#1c1f26",
+            details: true,
+            hotlist: true,
+            news: ["headlines"]
+        });
 
-    document.getElementById('stocksTabLink').addEventListener('click', () => {
-      stockWidget.onChartReady(() => {
-        stockWidget.chart().setSymbol('NASDAQ:AAPL');
-      });
-      document.getElementById('stocksTabLink').classList.add('active');
-      document.getElementById('cryptoTabLink').classList.remove('active');
-    });
-  </script>
+        // Switch between Crypto and Stocks charts
+        document.getElementById('cryptoTabButton').addEventListener('click', () => {
+            cryptoChart.onChartReady(() => {
+                cryptoChart.chart().setSymbol('BINANCE:BTCUSDT');
+            });
+            document.getElementById('cryptoTabButton').classList.add('active');
+            document.getElementById('stocksTabButton').classList.remove('active');
+        });
+
+        document.getElementById('stocksTabButton').addEventListener('click', () => {
+            stockChart.onChartReady(() => {
+                stockChart.chart().setSymbol('NASDAQ:AAPL');
+            });
+            document.getElementById('stocksTabButton').classList.add('active');
+            document.getElementById('cryptoTabButton').classList.remove('active');
+        });
+    </script>
 </body>
 </html>
