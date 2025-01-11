@@ -1,60 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Market View</title>
-    <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Market View</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="container">
     <header>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#charts">Charts</a></li>
-                <li><a href="#news">News</a></li>
-            </ul>
-        </nav>
+      <h1>Market View</h1>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Charts</a>
+        <a href="#">News</a>
+        <a href="#">About</a>
+      </nav>
     </header>
-
-    <main>
-        <section id="home">
-            <h1>Welcome to Market View</h1>
-            <p>Your one-stop destination for real-time stock and crypto market data.</p>
-        </section>
-
-        <section id="charts">
-            <h2>Stock and Crypto Charts</h2>
-            <div id="chart"></div>
-        </section>
-
-        <section id="news">
-            <h2>Latest News</h2>
-            <p>Latest updates will be displayed here.</p>
-        </section>
-    </main>
-
+    <div class="main-content">
+      <div class="section dashboard">
+        <h2>Dashboard</h2>
+        <p>Track real-time stock and crypto data from Binance, TradingView, and more.</p>
+      </div>
+      <div class="section charts">
+        <h2>Charts</h2>
+        <p>View detailed stock and cryptocurrency charts.</p>
+      </div>
+      <div class="section news">
+        <h2>Market News</h2>
+        <p>Stay updated with the latest market news and trends.</p>
+      </div>
+    </div>
     <footer>
-        <p>&copy; 2025 Market View. All rights reserved.</p>
+      <p>&copy; 2025 Market View. All Rights Reserved.</p>
     </footer>
-
-    <script type="text/javascript">
-        new TradingView.widget({
-            "container_id": "chart",
-            "autosize": true,
-            "symbol": "BTCUSD", // You can change this to any crypto or stock symbol you want
-            "interval": "D", // Day interval
-            "timezone": "Etc/UTC",
-            "theme": "light",
-            "style": "1",
-            "locale": "en",
-            "toolbar_bg": "#f1f3f6",
-            "enable_publishing": false,
-            "withdateranges": true,
-            "hide_side_toolbar": false,
-            "allow_symbol_change": true
-        });
-    </script>
+  </div>
 </body>
 </html>
