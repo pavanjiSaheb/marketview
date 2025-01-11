@@ -1,33 +1,32 @@
-Pavan, [11-01-2025 12:22]
+Pavan, [11-01-2025 12:27]
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MarketView - Crypto & Stock Charts</title>
+    <title>MarketView - TradingView Charts</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://s3.tradingview.com/tv.js"></script>
 </head>
 <body>
-    <!-- Header Section -->
-    <header class="header">
+
+    <header>
         <div class="logo">
             <h1>MarketView</h1>
         </div>
-        <nav class="nav">
-            <a href="#" id="cryptoTab" class="active">Crypto</a>
-            <a href="#" id="stocksTab">Stocks</a>
-            <a href="#" id="newsTab">News</a>
+        <nav class="tabs">
+            <a href="#" id="cryptoTab" class="tab-btn active">Crypto</a>
+            <a href="#" id="stocksTab" class="tab-btn">Stocks</a>
+            <a href="#" id="newsTab" class="tab-btn">News</a>
         </nav>
     </header>
 
-    <!-- Main Content Section -->
     <main>
         <!-- Charts Section -->
         <section id="chartsSection">
-            <div class="tabs">
+            <div class="chart-tabs">
                 <button id="cryptoTabButton" class="tab-btn active">Crypto</button>
                 <button id="stocksTabButton" class="tab-btn">Stocks</button>
             </div>
@@ -46,12 +45,10 @@ Pavan, [11-01-2025 12:22]
         </section>
     </main>
 
-    <!-- Footer Section -->
     <footer>
         <p>&copy; 2025 MarketView. All Rights Reserved.</p>
     </footer>
 
-    <!-- Script to Handle Chart Switching -->
     <script>
         let currentChart;
 
@@ -62,7 +59,7 @@ Pavan, [11-01-2025 12:22]
             if (currentChart) {
                 currentChart.remove();
             }
-            
+
             // Create a new chart instance
             currentChart = new TradingView.widget({
                 container_id: "chart",
@@ -104,8 +101,7 @@ Pavan, [11-01-2025 12:22]
             newsTab.classList.remove('active');
         };
 
-Pavan, [11-01-2025 12:22]
-const showNewsSection = () => {
+        const showNewsSection = () => {
             chartsSection.classList.add('hidden');
             newsSection.classList.remove('hidden');
             newsTab.classList.add('active');
@@ -113,7 +109,8 @@ const showNewsSection = () => {
             stocksTab.classList.remove('active');
         };
 
-        // Add event listeners to tabs
+Pavan, [11-01-2025 12:27]
+// Add event listeners to tabs
         cryptoTab.addEventListener('click', showCryptoChart);
         stocksTab.addEventListener('click', showStocksChart);
         newsTab.addEventListener('click', showNewsSection);
@@ -121,5 +118,6 @@ const showNewsSection = () => {
         // Default view is Crypto Chart
         showCryptoChart();
     </script>
+
 </body>
 </html>
