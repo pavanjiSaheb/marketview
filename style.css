@@ -1,76 +1,121 @@
 /* Global Styles */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
-  background: #111;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  padding: 20px;
+    background-color: #111;
+    color: #fff;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  background: #222;
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 30px;
+    width: 100%;
+    background: #222;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 30px;
 }
 
-header h1 {
-  font-size: 36px;
-  font-weight: bold;
-  color: #f9b236;
+header .logo h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #f9b236;
 }
 
 nav a {
-  margin: 0 15px;
-  color: white;
-  font-size: 18px;
-  text-decoration: none;
-  transition: 0.3s;
+    text-decoration: none;
+    color: #fff;
+    margin-right: 20px;
+    font-size: 18px;
 }
 
 nav a:hover, .active {
-  color: #f9b236;
-  border-bottom: 2px solid #f9b236;
+    color: #f9b236;
+}
+
+.tabs {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.tab-btn {
+    background: #222;
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.tab-btn:hover {
+    background-color: #f9b236;
+}
+
+.tab-btn.active {
+    background-color: #f9b236;
+    color: #111;
 }
 
 .chart-container {
-  width: 100%;
-  height: 600px;
-  margin-top: 40px;
+    width: 90%;
+    max-width: 1100px;
+    height: 600px;
+    margin-top: 40px;
+    background-color: #333;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.news-section {
-  margin-top: 40px;
-  width: 100%;
-  text-align: center;
+.news-container {
+    margin-top: 40px;
+    width: 90%;
+    max-width: 1100px;
+    text-align: left;
+}
+
+.news-container h2 {
+    color: #f9b236;
+    font-size: 28px;
+    margin-bottom: 20px;
 }
 
 .news-item {
-  background: #333;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  font-size: 18px;
+    background-color: #222;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.news-item:hover {
+    background-color: #333;
 }
 
 footer {
-  margin-top: 40px;
-  padding: 20px;
-  background: #111;
-  color: white;
-  width: 100%;
-  text-align: center;
+    margin-top: 50px;
+    padding: 15px;
+    background-color: #111;
+    color: white;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
