@@ -1,4 +1,4 @@
-Pavan, [11-01-2025 12:17]
+Pavan, [11-01-2025 12:22]
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +20,6 @@ Pavan, [11-01-2025 12:17]
             <a href="#" id="cryptoTab" class="active">Crypto</a>
             <a href="#" id="stocksTab">Stocks</a>
             <a href="#" id="newsTab">News</a>
-            <a href="#">Login</a>
         </nav>
     </header>
 
@@ -54,37 +53,33 @@ Pavan, [11-01-2025 12:17]
 
     <!-- Script to Handle Chart Switching -->
     <script>
-        const cryptoChart = new TradingView.widget({
-            container_id: "chart",
-            width: "100%",
-            height: "600px",
-            symbol: "BINANCE:BTCUSDT",
-            interval: "1D",
-            timezone: "Etc/UTC",
-            theme: "dark",
-            locale: "en",
-            toolbar_bg: "#1c1f26",
-            details: true,
-            hotlist: true,
-            news: ["headlines"]
-        });
+        let currentChart;
 
-        const stockChart = new TradingView.widget({
-            container_id: "chart",
-            width: "100%",
-            height: "600px",
-            symbol: "NASDAQ:AAPL",
-            interval: "1D",
-            timezone: "Etc/UTC",
-            theme: "dark",
-            locale: "en",
-            toolbar_bg: "#1c1f26",
-            details: true,
-            hotlist: true,
-            news: ["headlines"]
-        });
+        const chartContainer = document.getElementById("chart");
 
-        // Tab functionality to switch between Crypto, Stocks, and News
+        function loadChart(symbol) {
+            // Destroy the current chart if it exists
+            if (currentChart) {
+                currentChart.remove();
+            }
+            
+            // Create a new chart instance
+            currentChart = new TradingView.widget({
+                container_id: "chart",
+                width: "100%",
+                height: "600px",
+                symbol: symbol,
+                interval: "1D",
+                timezone: "Etc/UTC",
+                theme: "dark",
+                locale: "en",
+                toolbar_bg: "#1c1f26",
+                details: true,
+                hotlist: true,
+                news: ["headlines"]
+            });
+        }
+
         const cryptoTab = document.getElementById('cryptoTab');
         const stocksTab = document.getElementById('stocksTab');
         const newsTab = document.getElementById('newsTab');
@@ -92,9 +87,7 @@ Pavan, [11-01-2025 12:17]
         const chartsSection = document.getElementById('chartsSection');
 
         const showCryptoChart = () => {
-            cryptoChart.onChartReady(() => {
-                cryptoChart.chart().setSymbol('BINANCE:BTCUSDT');
-            });
+            loadChart('BINANCE:BTCUSDT'); // Load Crypto chart (BTC/USDT)
             chartsSection.classList.remove('hidden');
             newsSection.classList.add('hidden');
             cryptoTab.classList.add('active');
@@ -103,11 +96,7 @@ Pavan, [11-01-2025 12:17]
         };
 
         const showStocksChart = () => {
-            stockChart.onChartReady(() => {
-                stockChart.chart().setSymbol('NASDAQ:AAPL');
-
-Pavan, [11-01-2025 12:17]
-});
+            loadChart('NASDAQ:AAPL'); // Load Stock chart (Apple stock)
             chartsSection.classList.remove('hidden');
             newsSection.classList.add('hidden');
             stocksTab.classList.add('active');
@@ -115,7 +104,8 @@ Pavan, [11-01-2025 12:17]
             newsTab.classList.remove('active');
         };
 
-        const showNewsSection = () => {
+Pavan, [11-01-2025 12:22]
+const showNewsSection = () => {
             chartsSection.classList.add('hidden');
             newsSection.classList.remove('hidden');
             newsTab.classList.add('active');
@@ -123,7 +113,7 @@ Pavan, [11-01-2025 12:17]
             stocksTab.classList.remove('active');
         };
 
-        // Add event listeners
+        // Add event listeners to tabs
         cryptoTab.addEventListener('click', showCryptoChart);
         stocksTab.addEventListener('click', showStocksChart);
         newsTab.addEventListener('click', showNewsSection);
