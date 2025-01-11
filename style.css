@@ -1,71 +1,96 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #1e1e1e;
-  color: white;
+/* Reset basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* General Body Styling */
+body {
+    background-color: #121212;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Section */
 header {
-  background-color: #333;
-  padding: 15px;
-  text-align: center;
+    background: linear-gradient(45deg, #1E3C72, #2A5298); /* Dark blue gradient */
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
 }
 
 nav ul {
-  list-style-type: none;
-  padding: 0;
+    list-style-type: none;
 }
 
 nav ul li {
-  display: inline-block;
-  margin: 0 20px;
+    display: inline-block;
+    margin-right: 15px;
 }
 
 nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  padding: 10px;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 12px;
+    background-color: #333;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.tab:hover {
-  background-color: #555;
-  border-radius: 5px;
+nav ul li a:hover {
+    background-color: #5c85f7; /* Light blue hover effect */
 }
 
+/* Content Section */
+#content {
+    padding: 20px;
+}
+
+/* Chart Section */
 #chart-container {
-  width: 100%;
-  height: 500px;
-  background-color: #000;
+    height: 500px;
+    width: 100%;
 }
 
+/* News Section */
 #news-container {
-  display: none;
-  margin-top: 20px;
-}
-
-footer {
-  background-color: #333;
-  padding: 10px;
-  text-align: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+    margin-top: 40px;
 }
 
 .news-item {
-  margin: 10px 0;
-  padding: 10px;
-  background-color: #333;
-  border-radius: 5px;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.news-item:hover {
+    background-color: #444;
 }
 
 .news-item a {
-  color: #5c85f7;
-  text-decoration: none;
+    color: #5c85f7;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-.news-item a:hover {
-  text-decoration: underline;
+/* Footer Section */
+footer {
+    background-color: #333;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
