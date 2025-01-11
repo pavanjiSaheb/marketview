@@ -1,136 +1,59 @@
-/* Global Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-}
-
 body {
-    background-color: #111;
-    color: #fff;
-    font-size: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: #fff;
 }
 
 header {
-    width: 100%;
-    background: #1c1f26;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 10px;
-    margin-bottom: 30px;
+  background-color: #1b1b1b;
+  padding: 15px 0;
+  text-align: center;
 }
 
-header .logo h1 {
-    font-size: 32px;
-    font-weight: 700;
-    color: #f9b236;
+nav ul {
+  list-style-type: none;
+  padding: 0;
 }
 
-nav a {
-    text-decoration: none;
-    color: #fff;
-    margin-right: 20px;
-    font-size: 18px;
+nav ul li {
+  display: inline;
+  margin: 0 15px;
 }
 
-nav a:hover, .active {
-    color: #f9b236;
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-main {
-    width: 100%;
-    max-width: 1200px;
-    text-align: center;
+.tab:hover {
+  text-decoration: underline;
 }
 
-/* Charts Section */
-#chartsSection {
-    margin-top: 20px;
-}
-
-.chart-tabs {
-    margin-bottom: 20px;
-}
-
-.tab-btn {
-    background: #2f353b;
-    border: none;
-    color: white;
-    font-size: 18px;
-    padding: 10px 20px;
-    margin: 0 10px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background 0.3s ease;
-}
-
-.tab-btn:hover {
-    background-color: #f9b236;
-}
-
-.tab-btn.active {
-    background-color: #f9b236;
-    color: #111;
-}
-
-.chart-container {
-    width: 100%;
-    max-width: 1200px;
-    height: 700px;  /* Adjusted height for larger chart */
-    margin-top: 20px;
-    background-color: #333;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* News Section */
-#newsSection {
-    margin-top: 40px;
-    display: none;
-}
-
-.news-container {
-    width: 100%;
-    max-width: 1200px;
-    text-align: left;
-}
-
-.news-container h2 {
-    color: #f9b236;
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.news-item {
-    background-color: #222;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    font-size: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.news-item:hover {
-    background-color: #333;
+.container {
+  width: 80%;
+  margin: 30px auto;
+  text-align: center;
 }
 
 footer {
-    margin-top: 50px;
-    padding: 15px;
-    background-color: #1c1f26;
-    color: white;
-    width: 100%;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
+  background-color: #1b1b1b;
+  padding: 15px;
+  text-align: center;
+  color: #888;
+}
+
+#news-container {
+  padding: 20px;
+}
+
+#news-container h2 {
+  margin-bottom: 20px;
+}
+
+#news-container p {
+  font-size: 16px;
 }
