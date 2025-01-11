@@ -1,67 +1,96 @@
-const newsAPIKey = '85a51b6372cc4ec2adf8fa91af687657';  // Replace with your actual News API key
-const newsContainer = document.getElementById('news-container');
-const chartContainer = document.getElementById('chart-container');
-
-// Function to load TradingView chart for Crypto
-function loadCryptoChart() {
-    chartContainer.innerHTML = '';  // Clear existing content
-    new TradingView.widget({
-        "autosize": true,
-        "symbol": "BINANCE:BTCUSDT",
-        "interval": "60",
-        "container_id": "chart-container",
-        "datafeed": new TradingView.Datafeeds.UDFCompatibleDatafeed("https://demo_feed.tradingview.com"),
-        "library_path": "https://unpkg.com/@tradingview/charting-library@latest",
-        "locale": "en",
-        "theme": "dark",
-        "timezone": "Etc/UTC",
-        "studies_overrides": {},
-        "toolbar_bg": "#333",
-        "hide_side_toolbar": false,
-        "allow_symbol_change": true,
-    });
+/* Reset basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-// Function to load TradingView chart for Stocks
-function loadStockChart() {
-    chartContainer.innerHTML = '';  // Clear existing content
-    new TradingView.widget({
-        "autosize": true,
-        "symbol": "NASDAQ:GOOGL",
-        "interval": "60",
-        "container_id": "chart-container",
-        "datafeed": new TradingView.Datafeeds.UDFCompatibleDatafeed("https://demo_feed.tradingview.com"),
-        "library_path": "https://unpkg.com/@tradingview/charting-library@latest",
-        "locale": "en",
-        "theme": "dark",
-        "timezone": "Etc/UTC",
-        "studies_overrides": {},
-        "toolbar_bg": "#333",
-        "hide_side_toolbar": false,
-        "allow_symbol_change": true,
-    });
+/* General Body Styling */
+body {
+    background-color: #121212;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-// Function to load latest news
-function loadNews() {
-    fetch(https://newsapi.org/v2/top-headlines?category=business&apiKey=${newsAPIKey})
-        .then(response => response.json())
-        .then(data => {
-            const articles = data.articles;
-            newsContainer.innerHTML = '';  // Clear existing news
-            articles.forEach(article => {
-                const newsItem = document.createElement('div');
-                newsItem.classList.add('news-item');
-                newsItem.innerHTML = 
-                    <h3><a href="${article.url}" target="_blank">${article.title}</a></h3>
-                    <p>${article.description}</p>
-                    <img src="${article.urlToImage}" alt="${article.title}" style="width: 100%; height: auto; border-radius: 5px;">
-                ;
-                newsContainer.appendChild(newsItem);
-            });
-        })
-        .catch(error => console.error('Error fetching news:', error));
+/* Header Section */
+header {
+    background: linear-gradient(45deg, #1E3C72, #2A5298); /* Dark blue gradient */
+    padding: 20px;
+    text-align: center;
+    color: white;
 }
 
-// Initial load (Crypto chart by default)
-loadCryptoChart();
+header h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+nav ul li a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 12px;
+    background-color: #333;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #5c85f7; /* Light blue hover effect */
+}
+
+/* Content Section */
+#content {
+    padding: 20px;
+}
+
+/* Chart Section */
+#chart-container {
+    height: 500px;
+    width: 100%;
+}
+
+/* News Section */
+#news-container {
+    margin-top: 40px;
+}
+
+.news-item {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.news-item:hover {
+    background-color: #444;
+}
+
+.news-item a {
+    color: #5c85f7;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Footer Section */
+footer {
+    background-color: #333;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
