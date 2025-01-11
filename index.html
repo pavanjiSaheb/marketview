@@ -1,37 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MarketView</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://unpkg.com/@tradingview/charting-library@latest"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Market View</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#" class="tab" id="crypto-tab">Crypto</a></li>
-        <li><a href="#" class="tab" id="stocks-tab">Stocks</a></li>
-        <li><a href="#" class="tab" id="news-tab">News</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <h1>Market View</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="loadCryptoChart()">Crypto</a></li>
+                <li><a href="#" onclick="loadStockChart()">Stocks</a></li>
+                <li><a href="#" onclick="loadNews()">News</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main>
-    <div id="chart-container" class="container">
-      <!-- TradingView Chart will load here -->
+    <div id="content">
+        <div id="chart-container"></div>
+        <div id="news-container"></div>
     </div>
-    <div id="news-container" class="container" style="display: none;">
-      <h2>Latest News</h2>
-      <div id="news"></div>
-    </div>
-  </main>
 
-  <footer>
-    <p>MarketView 2025 - All Rights Reserved</p>
-  </footer>
+    <footer>
+        <p>&copy; 2025 Market View. All rights reserved.</p>
+    </footer>
 
-  <script src="scripts.js"></script>
+    <script src="https://unpkg.com/@tradingview/charting-library@latest"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
