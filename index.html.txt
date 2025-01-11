@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market View</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#charts">Charts</a></li>
+                <li><a href="#news">News</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h1>Welcome to Market View</h1>
+            <p>Your one-stop destination for real-time stock and crypto market data.</p>
+        </section>
+
+        <section id="charts">
+            <h2>Stock and Crypto Charts</h2>
+            <div id="chart"></div>
+        </section>
+
+        <section id="news">
+            <h2>Latest News</h2>
+            <p>Latest updates will be displayed here.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Market View. All rights reserved.</p>
+    </footer>
+
+    <script type="text/javascript">
+        new TradingView.widget({
+            "container_id": "chart",
+            "autosize": true,
+            "symbol": "BTCUSD", // You can change this to any crypto or stock symbol you want
+            "interval": "D", // Day interval
+            "timezone": "Etc/UTC",
+            "theme": "light",
+            "style": "1",
+            "locale": "en",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "withdateranges": true,
+            "hide_side_toolbar": false,
+            "allow_symbol_change": true
+        });
+    </script>
+</body>
+</html>
